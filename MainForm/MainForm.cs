@@ -86,7 +86,7 @@ namespace MainForm
         {
             dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(true, TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
             buttonWriteToTxt.BackColor = Color.FromArgb(0, 102, 204);
-        }
+        }  
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
