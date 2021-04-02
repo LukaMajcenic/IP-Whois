@@ -72,35 +72,35 @@ namespace MainForm
 
         private void TextBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(true, TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
+            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
             buttonWriteToTxt.BackColor = Color.FromArgb(0 , 102, 204);
         }
 
         private void checkBoxIPv4_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(true, TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
+            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
             buttonWriteToTxt.BackColor = Color.FromArgb(0, 102, 204);
         }
 
         private void checkBoxIPv6_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(true, TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
+            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
             buttonWriteToTxt.BackColor = Color.FromArgb(0, 102, 204);
         }  
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(false, TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
+            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
         }
 
         private void radioButtonAscending_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(false, TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
+            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
         }
 
         private void radioButtonDescending_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(false, TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
+            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
         }
 
         private void dataGridViewIP_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -146,23 +146,10 @@ namespace MainForm
 
         private void buttonWriteToTxt_Click(object sender, EventArgs e)
         {
-            if (_IP_Repostirory.SearchList.Count == 0)
+            DialogResult dialogResult = MessageBox.Show($"Save search log?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("No search logs to save");
-            }
-            else
-            {
-                string s = "";
-                if(_IP_Repostirory.SearchList.Count != 1)
-                {
-                    s = "s";
-                }
-
-                DialogResult dialogResult = MessageBox.Show($"Save {_IP_Repostirory.SearchList.Count} search log{s}?", "", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    _IP_Repostirory.WriteToTxt();
-                }
+                _IP_Repostirory.WriteToTxt(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
             }
         }
 
@@ -296,7 +283,7 @@ namespace MainForm
                 }
             }
 
-            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(true, TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
+            dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
 
             buttonWriteToTxt.BackColor = Color.FromArgb(0, 102, 204);
         }

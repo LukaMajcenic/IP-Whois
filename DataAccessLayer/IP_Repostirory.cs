@@ -15,7 +15,6 @@ namespace DataAccessLayer
 {
     public class IP_Repostirory
     {
-        public List<string> SearchList = new List<string>();
         public static string CallApi(string url)
         {
             HttpWebRequest webrequest = (HttpWebRequest)WebRequest.Create("https://ipwhois.app/json/" + url);
@@ -299,21 +298,8 @@ namespace DataAccessLayer
             return IPunique;
         }
 
-        public List<IPMainForm> SearchAndSort(bool WriteToLog, string TxtBox, bool IPv4, bool IPv6, List<string> MissingCountriesList, string Attribute, bool Asc)
-        {
-            //Adding time to logs
-            string SearchString = DateTime.Now.ToString();
-
-            //Adding search term to logs
-            if(TxtBox == "")
-            {
-                SearchString += " - Search term: None";
-            }
-            else
-            {
-                SearchString += " - Search term: '" + TxtBox + "'";
-            }
-            
+        public List<IPMainForm> SearchAndSort(string TxtBox, bool IPv4, bool IPv6, List<string> MissingCountriesList, string Attribute, bool Asc)
+        {            
             TxtBox = TxtBox.ToLower();
 
             List<IPMainForm> FilterIPs = GetIPMainForm();
@@ -324,44 +310,11 @@ namespace DataAccessLayer
             || x.city.ToLower().Contains(TxtBox) 
             || x.isp.ToLower().Contains(TxtBox)).ToList();
 
-            //Adding IP version to logs
-            if(IPv4 == false)
-            {
+            if (!IPv4)
                 FilterIPs = FilterIPs.Where(x => x.type != "IPv4").ToList();
-                SearchString += ", IPv4 not included";
-            }
-            else
-            {
-                SearchString += ", IPv4 included";
-            }
 
-            if(IPv6 == false)
-            {
+            if (!IPv6)
                 FilterIPs = FilterIPs.Where(x => x.type != "IPv6").ToList();
-                SearchString += ", IPv6 not included";
-            }
-            else
-            {
-                SearchString += ", IPv6 included";
-            }
-
-            //Adding countries to logs
-            List<string> CountriesList = FilterIPs.Select(x => x.country).Distinct().OrderBy(x => x).ToList();
-            SearchString += ", Countries included: ";
-            if (CountriesList.Count == 0)
-            {
-                SearchString += "None";
-            }
-            else
-            {
-                foreach (string country in CountriesList)
-                {
-                    SearchString += country + ", ";
-                }
-                SearchString = SearchString.Substring(0, SearchString.Length - 2);
-            }
-            
-
 
             if (Asc == true)
             {
@@ -400,9 +353,65 @@ namespace DataAccessLayer
                 }
             }
 
+            return FilterIPs;
+        }
+
+        public void WriteToTxt(string TxtBox, bool IPv4, bool IPv6, List<string> MissingCountriesList, string Attribute, bool Asc)
+        {
+            string SearchString = "";
+
+            //Adding time to logs
+            SearchString += DateTime.Now.ToString();
+
+            //Adding search term to logs
+            if (TxtBox == "")
+            {
+                SearchString += " - Search term: None";
+            }
+            else
+            {
+                SearchString += " - Search term: '" + TxtBox + "'";
+            }
+
+            //Adding IP version to logs
+            if (IPv4 == false)
+            {
+                SearchString += ", IPv4 not included";
+            }
+            else
+            {
+                SearchString += ", IPv4 included";
+            }
+
+            if (IPv6 == false)
+            {
+                SearchString += ", IPv6 not included";
+            }
+            else
+            {
+                SearchString += ", IPv6 included";
+            }
+
+            //Adding countries to logs
+            var FilterIPs = SearchAndSort(TxtBox, IPv4, IPv6, MissingCountriesList, Attribute, Asc);
+            var CountriesList = FilterIPs.Select(x => x.country).Distinct().OrderBy(x => x).ToList();
+            SearchString += ", Countries included: ";
+            if (CountriesList.Count == 0)
+            {
+                SearchString += "None";
+            }
+            else
+            {
+                foreach (string country in CountriesList)
+                {
+                    SearchString += country + ", ";
+                }
+                SearchString = SearchString.Substring(0, SearchString.Length - 2);
+            }
+
             //Adding results to logs
             SearchString += "\n==========================================================";
-            if(FilterIPs.Count() == 0)
+            if (FilterIPs.Count() == 0)
             {
                 SearchString = SearchString + "\nNo data matched the criteria";
             }
@@ -415,20 +424,7 @@ namespace DataAccessLayer
             }
             SearchString += "\n==========================================================\n";
 
-            if (WriteToLog == true)
-            {
-                SearchList.Add(SearchString);
-            }
-            return FilterIPs;
-        }
-
-        public void WriteToTxt()
-        {
-            if(SearchList.Count != 0)
-            {
-                File.AppendAllLines("..\\..\\..\\logs.txt", SearchList);
-                SearchList.Clear();
-            }
+            File.AppendAllText("..\\..\\..\\logs.txt", SearchString);
         }
     }
 }

@@ -367,7 +367,7 @@ namespace MainForm
 
                 UpdateObjectInfo();
                 _IP_Repostirory.UpdateIP(ipObject);
-                mainformObject.dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(false, mainformObject.TextBoxSearch.Text,
+                mainformObject.dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(mainformObject.TextBoxSearch.Text,
                     mainformObject.checkBoxIPv4.Checked, mainformObject.checkBoxIPv6.Checked, mainformObject.GetCountriesFromComboBox(), mainformObject.comboBox.Text,
                     mainformObject.radioButtonAscending.Checked);
                 mainformObject.PopulateCountriesComboBox();
@@ -456,7 +456,7 @@ namespace MainForm
             {
                 UpdateObjectInfo();
                 _IP_Repostirory.UpdateIP(ipObject);
-                mainformObject.dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(false, mainformObject.TextBoxSearch.Text,
+                mainformObject.dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(mainformObject.TextBoxSearch.Text,
                     mainformObject.checkBoxIPv4.Checked, mainformObject.checkBoxIPv6.Checked, mainformObject.GetCountriesFromComboBox(), mainformObject.comboBox.Text,
                     mainformObject.radioButtonAscending.Checked);
                 mainformObject.PopulateCountriesComboBox();
