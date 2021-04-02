@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.IO;
@@ -81,7 +82,7 @@ namespace DataAccessLayer
                     currency_rates = "0.0";
                 }
 
-                string sSqlConnectionString = "Server=193.198.57.183;Database=STUDENTI_PIN;User Id=pin;Password=Vsmti1234!;";
+                string sSqlConnectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
                 using (DbConnection oConnection = new SqlConnection(sSqlConnectionString))
                 using (DbCommand oCommand = oConnection.CreateCommand())
                 {
@@ -108,7 +109,7 @@ namespace DataAccessLayer
 
         public void DeleteIP(string IPdelete)
         {
-            string connectionString = "Server=193.198.57.183;Database=STUDENTI_PIN;User Id=pin;Password=Vsmti1234!;";
+            string connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
             using (DbConnection connection = new SqlConnection(connectionString))
             using (DbCommand command = connection.CreateCommand())
             {
@@ -123,7 +124,7 @@ namespace DataAccessLayer
 
         public void UpdateIP(IP ipObject)
         {
-            string sSqlConnectionString = "Server=193.198.57.183;Database=STUDENTI_PIN;User Id=pin;Password=Vsmti1234!;";
+            string sSqlConnectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
             using (DbConnection oConnection = new SqlConnection(sSqlConnectionString))
             using (DbCommand oCommand = oConnection.CreateCommand())
             {
@@ -149,7 +150,7 @@ namespace DataAccessLayer
         {
             List<IPMainForm> ListIP = new List<IPMainForm>();
 
-            string connectionString = "Server=193.198.57.183;Database=STUDENTI_PIN;User Id=pin;Password=Vsmti1234!;";
+            string connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
             using (DbConnection connection = new SqlConnection(connectionString))
             using (DbCommand command = connection.CreateCommand())
             {
@@ -178,7 +179,7 @@ namespace DataAccessLayer
         {
             IP OneIP = new IP();
 
-            string connectionString = "Server=193.198.57.183;Database=STUDENTI_PIN;User Id=pin;Password=Vsmti1234!;";
+            string connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
             using (DbConnection connection = new SqlConnection(connectionString))
             using (DbCommand command = connection.CreateCommand())
             {
