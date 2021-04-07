@@ -145,9 +145,7 @@ namespace MainForm
         {
             DialogResult dialogResult = MessageBox.Show($"Save search log?", "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
-            {
                 _IP_Repostirory.WriteToTxt(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
-            }
         }
 
         private void buttonRandom_Click(object sender, EventArgs e)
@@ -192,18 +190,13 @@ namespace MainForm
         private void CheckAll(bool TrueORFalse)
         {
             checkBoxComboBoxCountries.TextChanged -= checkBoxComboBoxCountries_TextChanged;
-            foreach (var v in checkBoxComboBoxCountries.CheckBoxItems.ToList())
-            {
-                v.Checked = TrueORFalse;
-            }
-            if(TrueORFalse)
-            {
+
+            checkBoxComboBoxCountries.CheckBoxItems.Select(x => { x.Checked = TrueORFalse; return x; }).ToList();
+            if (TrueORFalse)
                 checkBoxComboBoxCountries.Text = "All countries";
-            }
             else
-            {
                 checkBoxComboBoxCountries.Text = "No countries";
-            }
+
             checkBoxComboBoxCountries.TextChanged += checkBoxComboBoxCountries_TextChanged;
         }
 
@@ -225,32 +218,16 @@ namespace MainForm
 
         public List<string> GetCountriesFromComboBox()
         {
-            List<string> ListOfCountries = new List<string>();
-            foreach (var v in checkBoxComboBoxCountries.CheckBoxItems.ToList())
-            {
-                if (v.Checked == false)
-                {
-                    ListOfCountries.Add(v.Text);
-                }
-            }
-            return ListOfCountries;
+            return checkBoxComboBoxCountries.CheckBoxItems.Where(x => x.Checked == false).Select(x => x.Text).ToList();
         }
 
         private void checkBoxComboBoxCountries_TextChanged(object sender, EventArgs e)
         {
             bool AllClicked = checkBoxComboBoxCountries.CheckBoxItems[0].Focused;
 
-            if(AllClicked == true)
+            if(AllClicked)
             {
-                switch(checkBoxComboBoxCountries.CheckBoxItems[0].Checked)
-                {
-                    case true:
-                        CheckAll(true);
-                        break;
-                    case false:
-                        CheckAll(false);
-                        break;
-                }
+                CheckAll(checkBoxComboBoxCountries.CheckBoxItems[0].Checked);
             }
             else
             {
@@ -284,6 +261,7 @@ namespace MainForm
 
         private void dataGridViewIP_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            //Indexes 1 and 5 are not allowed because we cant sort by IP type and button 'delete', respectively
             int ColumnIndex = dataGridViewIP.Columns[e.ColumnIndex].Index;
             switch (ColumnIndex)
             {
@@ -300,29 +278,19 @@ namespace MainForm
                     comboBox.SelectedIndex = 3;
                     break;
             }
-            switch (ColumnIndex)
-            {
-                case 0:
-                    comboBox.SelectedIndex = 0;
-                    break;
-                case 2:
-                    comboBox.SelectedIndex = 1;
-                    break;
-                case 3:
-                    comboBox.SelectedIndex = 2;
-                    break;
-                case 4:
-                    comboBox.SelectedIndex = 3;
-                    break;
-            }
 
-            if(radioButtonAscending.Checked == true && ColumnIndex != 1 && ColumnIndex != 5)
+            if (ColumnIndex != 1 && ColumnIndex != 5)
             {
-                radioButtonDescending.Checked = true;
-            }
-            else if(ColumnIndex != 1 && ColumnIndex != 5)
-            {
-                radioButtonAscending.Checked = true;
+                if (radioButtonAscending.Checked)
+                {
+                    radioButtonAscending.Checked = false;
+                    radioButtonDescending.Checked = true;
+                }
+                else
+                {
+                    radioButtonAscending.Checked = true;
+                    radioButtonDescending.Checked = false;
+                }
             }
         }
     }

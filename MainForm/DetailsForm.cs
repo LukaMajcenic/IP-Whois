@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccessLayer;
@@ -35,13 +36,9 @@ namespace MainForm
             this.Text = ipObject.ip + " Details";
 
             if (ipObject.country_flag.Length == 30)
-            {
                 pictureBoxFlag.Load(ipObject.country_flag);
-            }
             else
-            {
-                pictureBoxFlag.Load("https://i.dlpng.com/static/png/6722565_preview.png");            
-            }
+                pictureBoxFlag.Load("https://i.dlpng.com/static/png/6722565_preview.png");
 
             InitializeInfo();
             InitializeMap();
@@ -139,7 +136,6 @@ namespace MainForm
             textBoxContinentCode2.Text = ipObject.continent_code;
             textBoxCurrencyCode2.Text = ipObject.currency_code;
             textBoxSymbol2.Text = ipObject.currency_symbol;
-
         }
 
         public void UpdateObjectInfo()
@@ -208,74 +204,44 @@ namespace MainForm
             textBoxContinentCode2.ReadOnly = yayORnay;
             textBoxCurrencyCode2.ReadOnly = yayORnay;
             textBoxSymbol2.ReadOnly = yayORnay;
+
+            buttonEdit.Visible = yayORnay;
+            buttonCancel.Visible = !yayORnay;
+            buttonSave.Visible = !yayORnay;
+
+            buttonEditnext.Visible = yayORnay;
+            buttonCancelnext.Visible = !yayORnay;
+            buttonSavenext.Visible = !yayORnay;
         }
 
-        private void SetBorderStyleTrue()
+        private void SetBorderStyle(BorderStyle borderStyle = BorderStyle.FixedSingle)
         {
-            textBoxContinent2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCountry2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxRegion2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCity2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxLatitude2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxLongitude2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxAsn2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxOrg2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxIsp2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCurrency2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxIso2.BorderStyle = BorderStyle.FixedSingle;
+            void ChangeControls(TableLayoutPanel tableLayoutPanel)
+            {
+                foreach (var control in tableLayoutPanel.Controls)
+                {
+                    var textBox = control as TextBox;
+                    if (textBox != null)
+                    {
+                        if (textBox.Name.Contains('2'))
+                        {
+                            textBox.BorderStyle = borderStyle;
+                        }
+                    }
+                }
+            }
+            ChangeControls(this.tableLayoutPanel1);
+            ChangeControls(this.tableLayoutPanel2);
 
-            textBoxCountryCapital2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCountryPhone2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCountryNeighbours2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxTimezone2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxTimezoneName2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxGMT2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxGMToff2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxDSToff2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxPlural2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxRates2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxContinentCode2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCurrencyCode2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxSymbol2.BorderStyle = BorderStyle.FixedSingle;
-        }
-
-        private void SetBorderStyleFalse()
-        {
-            textBoxContinent2.BorderStyle = BorderStyle.None;
-            textBoxCountry2.BorderStyle = BorderStyle.None;
-            textBoxRegion2.BorderStyle = BorderStyle.None;
-            textBoxCity2.BorderStyle = BorderStyle.None;
-            textBoxLatitude2.BorderStyle = BorderStyle.None;
-            textBoxLongitude2.BorderStyle = BorderStyle.None;
-            textBoxAsn2.BorderStyle = BorderStyle.None;
-            textBoxOrg2.BorderStyle = BorderStyle.None;
-            textBoxIsp2.BorderStyle = BorderStyle.None;
-            textBoxCurrency2.BorderStyle = BorderStyle.None;
-            textBoxIso2.BorderStyle = BorderStyle.None;
-
-            textBoxCountryCapital2.BorderStyle = BorderStyle.None;
-            textBoxCountryPhone2.BorderStyle = BorderStyle.None;
-            textBoxCountryNeighbours2.BorderStyle = BorderStyle.None;
-            textBoxTimezone2.BorderStyle = BorderStyle.None;
-            textBoxTimezoneName2.BorderStyle = BorderStyle.None;
-            textBoxGMT2.BorderStyle = BorderStyle.None;
-            textBoxGMToff2.BorderStyle = BorderStyle.None;
-            textBoxDSToff2.BorderStyle = BorderStyle.None;
-            textBoxPlural2.BorderStyle = BorderStyle.None;
-            textBoxRates2.BorderStyle = BorderStyle.None;
-            textBoxContinentCode2.BorderStyle = BorderStyle.None;
-            textBoxCurrencyCode2.BorderStyle = BorderStyle.None;
-            textBoxSymbol2.BorderStyle = BorderStyle.None;
+            textBoxContinentCode2.BorderStyle = borderStyle;
+            textBoxCurrencyCode2.BorderStyle = borderStyle;
+            textBoxSymbol2.BorderStyle = borderStyle;
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             SetReadOnly(false);
-            SetBorderStyleTrue();
-
-            buttonEdit.Visible = false;
-            buttonCancel.Visible = true;
-            buttonSave.Visible = true;            
+            SetBorderStyle();          
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -283,60 +249,48 @@ namespace MainForm
             InitializeInfo();
 
             SetReadOnly(true);
-            SetBorderStyleFalse();
-
-            buttonEdit.Visible = true;
-            buttonCancel.Visible = false;
-            buttonSave.Visible = false;            
+            SetBorderStyle(BorderStyle.None);           
         }
 
-        private bool LatCheck(string LatForCheck)
+        private bool LatLonCheck(string StringForCheck, string LatOrLon)
         {
             bool Valid = false;
 
-            LatForCheck = LatForCheck.Replace(".", ",");
-            if (double.TryParse(LatForCheck, out _) == true)
+            StringForCheck = StringForCheck.Replace(".", ",");
+            if (double.TryParse(StringForCheck, out _) == true)
             {
                 Valid = true;
             }
 
-            double DoubleString;
-            if(Valid == true)
-            {
-                DoubleString = Convert.ToDouble(LatForCheck);
-                if (DoubleString > 90 || DoubleString < -90)
-                {
-                    Valid = false;
-                }
-            }
-
-            return Valid;
-        }
-
-        private bool LonCheck(string LonForCheck)
-        {
-            bool Valid = false;
-
-            LonForCheck = LonForCheck.Replace(".", ",");
-            if (double.TryParse(LonForCheck, out _) == true)
-            {
-                Valid = true;
-            }
-
-            double DoubleString;
             if (Valid == true)
             {
-                DoubleString = Convert.ToDouble(LonForCheck);
-                if (DoubleString > 180 || DoubleString < -180)
+                int Upper, Lower;
+                switch(LatOrLon)
+                {
+                    case "Lat":
+                        Upper = 90;
+                        Lower = -90;
+                        break;
+                    case "Lon":
+                        Upper = 180;
+                        Lower = -180;
+                        break;
+                    default:
+                        Upper = 181;
+                        Lower = -181;
+                        break;
+                }
+
+                double DoubleString = Convert.ToDouble(StringForCheck);
+                if (DoubleString > Upper || DoubleString < Lower)
                 {
                     Valid = false;
                 }
             }
-
             return Valid;
         }
 
-        private void InputEmpty()
+        private void InputEmpty() 
         {
             foreach (var control in tableLayoutPanel1.Controls)
             {
@@ -344,13 +298,17 @@ namespace MainForm
                 if (textBox != null)
                 {
                     textBox.Text = textBox.Text.Trim();
-                    if (textBox.Text == "" && textBox.Name != "textBoxLatitude2" && textBox.Name != "textBoxLongitude2" && textBox.Name != "textBoxRates2")
+                    textBox.Text = Regex.Replace(textBox.Text, @"\s+", " ");
+                    if(textBox.Text == "")
                     {
-                        textBox.Text = "NO DATA";
-                    }
-                    else if(textBox.Text == "")
-                    {
-                        textBox.Text = "0";
+                        if(textBox.Name == "textBoxLatitude2" || textBox.Name == "textBoxLongitude2" )
+                        {
+                            textBox.Text = "0";
+                        }
+                        else
+                        {
+                            textBox.Text = "NO DATA";
+                        }
                     }
                 }
             }
@@ -359,12 +317,11 @@ namespace MainForm
         private void buttonSave_Click(object sender, EventArgs e)
         {
             InputEmpty();
-            if (LatCheck(textBoxLatitude2.Text) == true && LonCheck(textBoxLongitude2.Text) == true)
+            if (LatLonCheck(textBoxLatitude2.Text, "Lat") && LatLonCheck(textBoxLongitude2.Text, "Lon"))
             {
                 string PreviousLat = ipObject.latitude.ToString();
                 string PreviousLon = ipObject.longitude.ToString();
                 
-
                 UpdateObjectInfo();
                 _IP_Repostirory.UpdateIP(ipObject);
                 mainformObject.dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(mainformObject.TextBoxSearch.Text,
@@ -373,11 +330,7 @@ namespace MainForm
                 mainformObject.PopulateCountriesComboBox();
 
                 SetReadOnly(true);
-                SetBorderStyleFalse();
-
-                buttonEdit.Visible = true;
-                buttonCancel.Visible = false;
-                buttonSave.Visible = false;
+                SetBorderStyle(BorderStyle.None);
 
                 textBoxLatitude2.Text = textBoxLatitude2.Text.Replace('.', ',');
                 textBoxLongitude2.Text = textBoxLongitude2.Text.Replace('.', ',');
@@ -389,7 +342,14 @@ namespace MainForm
             }
             else
             {
-                MessageBox.Show("Invalid latitude or longitude");
+                string message = "Invalid ";
+                if (LatLonCheck(textBoxLatitude2.Text, "Lat") == false && LatLonCheck(textBoxLongitude2.Text, "Lon") == false)
+                    message += "latitude and longitude";
+                else if (LatLonCheck(textBoxLatitude2.Text, "Lat") == false)
+                    message += "latitude";
+                else if (LatLonCheck(textBoxLongitude2.Text, "Lon") == false)
+                    message += "longitude";
+                MessageBox.Show(message);
             }
         }
 
@@ -400,7 +360,7 @@ namespace MainForm
                 InitializeInfo();
 
                 SetReadOnly(true);
-                SetBorderStyleFalse();
+                SetBorderStyle(BorderStyle.None);
 
                 buttonEdit.Visible = true;
                 buttonCancel.Visible = false;
@@ -415,11 +375,7 @@ namespace MainForm
         private void buttonEditnext_Click(object sender, EventArgs e)
         {
             SetReadOnly(false);
-            SetBorderStyleTrue();
-
-            buttonEditnext.Visible = false;
-            buttonCancelnext.Visible = true;
-            buttonSavenext.Visible = true;
+            SetBorderStyle();
         }
 
         private void buttonCancelnext_Click(object sender, EventArgs e)
@@ -427,11 +383,7 @@ namespace MainForm
             InitializeInfo();
 
             SetReadOnly(true);
-            SetBorderStyleFalse();
-
-            buttonEditnext.Visible = true;
-            buttonCancelnext.Visible = false;
-            buttonSavenext.Visible = false;
+            SetBorderStyle(BorderStyle.None);
 
             textBoxCurrency2.Text = textBoxCurrency2.Text.Replace('.', ',');
         }
@@ -462,19 +414,14 @@ namespace MainForm
                 mainformObject.PopulateCountriesComboBox();
 
                 SetReadOnly(true);
-                SetBorderStyleFalse();
-
-                buttonEditnext.Visible = true;
-                buttonCancelnext.Visible = false;
-                buttonSavenext.Visible = false;
+                SetBorderStyle(BorderStyle.None);
 
                 textBoxRates2.Text = textBoxRates2.Text.Replace('.', ',');
             }
             else
             {
                 MessageBox.Show("Invalid currency rates");
-            }
-            
+            }   
         }
 
         private void buttonZoomIn_Click(object sender, EventArgs e)

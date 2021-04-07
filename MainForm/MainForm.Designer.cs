@@ -43,7 +43,6 @@
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.checkBoxComboBoxCountries = new PresentationControls.CheckBoxComboBox();
-            this.buttonWriteToTxt = new System.Windows.Forms.Button();
             this.TextBoxSearch = new ChreneLib.Controls.TextBoxes.CTextBox();
             this.checkBoxIPv4 = new System.Windows.Forms.CheckBox();
             this.checkBoxIPv6 = new System.Windows.Forms.CheckBox();
@@ -54,6 +53,7 @@
             this.buttonFlat2 = new System.Windows.Forms.Button();
             this.radioButtonAscending = new System.Windows.Forms.RadioButton();
             this.radioButtonDescending = new System.Windows.Forms.RadioButton();
+            this.buttonWriteToTxt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIP)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -241,28 +241,13 @@
             this.checkBoxComboBoxCountries.TextChanged += new System.EventHandler(this.checkBoxComboBoxCountries_TextChanged);
             this.checkBoxComboBoxCountries.Click += new System.EventHandler(this.checkBoxComboBoxCountries_Click);
             // 
-            // buttonWriteToTxt
-            // 
-            this.buttonWriteToTxt.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonWriteToTxt.FlatAppearance.BorderSize = 0;
-            this.buttonWriteToTxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonWriteToTxt.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonWriteToTxt.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonWriteToTxt.Image = global::MainForm.Properties.Resources.log2;
-            this.buttonWriteToTxt.Location = new System.Drawing.Point(6, 7);
-            this.buttonWriteToTxt.Name = "buttonWriteToTxt";
-            this.buttonWriteToTxt.Size = new System.Drawing.Size(43, 43);
-            this.buttonWriteToTxt.TabIndex = 7;
-            this.buttonWriteToTxt.UseVisualStyleBackColor = false;
-            this.buttonWriteToTxt.Click += new System.EventHandler(this.buttonWriteToTxt_Click);
-            // 
             // TextBoxSearch
             // 
             this.TextBoxSearch.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxSearch.Location = new System.Drawing.Point(58, 7);
+            this.TextBoxSearch.Location = new System.Drawing.Point(67, 7);
             this.TextBoxSearch.Margin = new System.Windows.Forms.Padding(6);
             this.TextBoxSearch.Name = "TextBoxSearch";
-            this.TextBoxSearch.Size = new System.Drawing.Size(692, 43);
+            this.TextBoxSearch.Size = new System.Drawing.Size(683, 43);
             this.TextBoxSearch.TabIndex = 6;
             this.TextBoxSearch.WaterMark = "Search based on attribute";
             this.TextBoxSearch.WaterMarkActiveForeColor = System.Drawing.Color.Silver;
@@ -420,6 +405,21 @@
             this.radioButtonDescending.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButtonDescending.UseVisualStyleBackColor = false;
             this.radioButtonDescending.CheckedChanged += new System.EventHandler(this.radioButtonDescending_CheckedChanged);
+            // 
+            // buttonWriteToTxt
+            // 
+            this.buttonWriteToTxt.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonWriteToTxt.FlatAppearance.BorderSize = 0;
+            this.buttonWriteToTxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWriteToTxt.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonWriteToTxt.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonWriteToTxt.Image = global::MainForm.Properties.Resources.log2;
+            this.buttonWriteToTxt.Location = new System.Drawing.Point(6, 7);
+            this.buttonWriteToTxt.Name = "buttonWriteToTxt";
+            this.buttonWriteToTxt.Size = new System.Drawing.Size(52, 43);
+            this.buttonWriteToTxt.TabIndex = 7;
+            this.buttonWriteToTxt.UseVisualStyleBackColor = false;
+            this.buttonWriteToTxt.Click += new System.EventHandler(this.buttonWriteToTxt_Click);
             // 
             // MainForm
             // 
