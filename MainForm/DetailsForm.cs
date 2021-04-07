@@ -290,9 +290,9 @@ namespace MainForm
             return Valid;
         }
 
-        private void InputEmpty() 
+        private void InputEmpty(TableLayoutPanel tableLayoutPanel) 
         {
-            foreach (var control in tableLayoutPanel1.Controls)
+            foreach (var control in tableLayoutPanel.Controls)
             {
                 var textBox = control as TextBox;
                 if (textBox != null)
@@ -316,7 +316,7 @@ namespace MainForm
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            InputEmpty();
+            InputEmpty(this.tableLayoutPanel1);
             if (LatLonCheck(textBoxLatitude2.Text, "Lat") && LatLonCheck(textBoxLongitude2.Text, "Lon"))
             {
                 string PreviousLat = ipObject.latitude.ToString();
@@ -403,7 +403,7 @@ namespace MainForm
 
         private void buttonSavenext_Click(object sender, EventArgs e)
         {
-            InputEmpty();
+            InputEmpty(this.tableLayoutPanel2);
             if (CurrencyCheck(textBoxRates2.Text) == true)
             {
                 UpdateObjectInfo();
