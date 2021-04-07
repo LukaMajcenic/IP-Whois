@@ -73,19 +73,16 @@ namespace MainForm
         private void TextBoxSearch_TextChanged(object sender, EventArgs e)
         {
             dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
-            buttonWriteToTxt.BackColor = Color.FromArgb(0 , 102, 204);
         }
 
         private void checkBoxIPv4_CheckedChanged(object sender, EventArgs e)
         {
             dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
-            buttonWriteToTxt.BackColor = Color.FromArgb(0, 102, 204);
         }
 
         private void checkBoxIPv6_CheckedChanged(object sender, EventArgs e)
         {
             dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
-            buttonWriteToTxt.BackColor = Color.FromArgb(0, 102, 204);
         }  
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -216,7 +213,6 @@ namespace MainForm
             
             checkBoxComboBoxCountries.Items.Add("All");  
 
-            //var IpObjects = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
             List<string> ListOfCountries = _IP_Repostirory.GetIPMainForm().Select(x => x.country).Distinct().OrderBy(x => x).ToList();
 
             foreach(var v in ListOfCountries)
@@ -284,8 +280,6 @@ namespace MainForm
             }
 
             dataGridViewIP.DataSource = _IP_Repostirory.SearchAndSort(TextBoxSearch.Text, checkBoxIPv4.Checked, checkBoxIPv6.Checked, GetCountriesFromComboBox(), comboBox.Text, radioButtonAscending.Checked);
-
-            buttonWriteToTxt.BackColor = Color.FromArgb(0, 102, 204);
         }
 
         private void dataGridViewIP_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

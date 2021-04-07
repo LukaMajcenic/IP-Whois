@@ -355,7 +355,6 @@ namespace DataAccessLayer
 
             return FilterIPs;
         }
-
         public void WriteToTxt(string TxtBox, bool IPv4, bool IPv6, List<string> MissingCountriesList, string Attribute, bool Asc)
         {
             string SearchString = "";
@@ -370,7 +369,7 @@ namespace DataAccessLayer
             }
             else
             {
-                SearchString += " - Search term: '" + TxtBox + "'";
+                SearchString += $" - Search term: '{TxtBox}'";
             }
 
             //Adding IP version to logs

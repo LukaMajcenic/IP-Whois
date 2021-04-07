@@ -1,30 +1,7 @@
-2.4.2021. 21:12:09 - Search term: None, IPv4 included, IPv6 included, Countries included:  d , Bulgaria, Chinax'', Croatia, Croatiaa, France, Latvia, Malaysia, NO DATA, Sweden', Ukraine, United    States, United States
+3.4.2021. 12:50:25 - Search term: None, IPv4 included, IPv6 included, Countries included: Croatia, Croatiaa
 ==========================================================
-1.1.1.1-IPv4-United States-Los Angeles-APNIC and CloudFlare DNS Resolver Project
-1.2.2.2-IPv4-Chinax''-NO DATA-NO DATA
-127.70.132.10-IPv4- d -NObDATA-NObDATA
-130.244.79.100-IPv4-Sweden'-Stockholm County-TELE2
-168.170.245.134-IPv4-United    States-Utica-Madison-Oneida BOCES
-193.108.57.180-IPv4-Ukraine-Kiev-SLW Internet Service Ltd.
 193.198.57.180-IPv4-Croatia-Virovitica-Croatian Academic and Research Network
-2001:0db8:0000:0000:0000:8a2e:0370:7334-IPv6-NO DATA-NO DATA-NO DATA
-21.8.70.188-IPv4-United States-Columbus-DoD Network Information Center
-213.202.100.79-IPv4-Croatiaa-Čakovec-ISKON INTERNET d.d. za informatiku i telekomunikacije
-215.14.55.233-IPv4-United States-Columbus-DoD Network Information Center
-225.199.211.47-IPv4-Malaysia-Putrajaya-Gigabit Hosting Sdn Bhd
-228.245.134.246-IPv4-NO DATA-NO DATA-NO DATA
-236.4.110.224-IPv4-NO DATA-NO DATA-NO DATA
-35.85.243.231-IPv4-United States-Portland-amazon.com Inc.
-44.102.49.180-IPv4-United States-San Diego-University of California, San Diego
-68.28.107.95-IPv4-United States-Overland Park-Sprint
-72.79.163.129-IPv4-United States-Scranton-MCI Communications Services, Inc. d/b/a Verizon Business
-73.252.117.113-IPv4-United States-Idaho-Comcast Cable Communications, LLC
-75.61.161.40-IPv4-United States-Zanesville-AT&T Services, Inc.
-78.219.132.117-IPv4-France-Paris-Free SAS
-79.124.31.57-IPv4-Bulgaria-Sofia-Telepoint Ltd
-8.8.8.9-IPv4-United States-Ashburn-Google LLC
-80.15.53.127-IPv4-France-Aubervilliers-Orange S.A.
 89.172.233.190-IPv4-Croatia-Osijek-Hrvatski Telekom d.d.
-90.133.192.157-IPv4-Latvia-Riga-TELE2
 93.139.2.233-IPv4-Croatia-Zagreb-Hrvatski Telekom d.d.
+213.202.100.79-IPv4-Croatiaa-Čakovec-ISKON INTERNET d.d. za informatiku i telekomunikacije
 ==========================================================

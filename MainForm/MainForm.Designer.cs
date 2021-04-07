@@ -243,11 +243,11 @@
             // 
             // buttonWriteToTxt
             // 
-            this.buttonWriteToTxt.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonWriteToTxt.BackColor = System.Drawing.SystemColors.HotTrack;
             this.buttonWriteToTxt.FlatAppearance.BorderSize = 0;
             this.buttonWriteToTxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonWriteToTxt.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonWriteToTxt.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonWriteToTxt.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.buttonWriteToTxt.Image = global::MainForm.Properties.Resources.log2;
             this.buttonWriteToTxt.Location = new System.Drawing.Point(6, 7);
             this.buttonWriteToTxt.Name = "buttonWriteToTxt";
