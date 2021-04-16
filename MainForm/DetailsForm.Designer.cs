@@ -221,7 +221,7 @@
             this.textBoxIPv6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxIPv6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxIPv6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBoxIPv6.Location = new System.Drawing.Point(79, 10);
+            this.textBoxIPv6.Location = new System.Drawing.Point(73, 10);
             this.textBoxIPv6.Name = "textBoxIPv6";
             this.textBoxIPv6.ReadOnly = true;
             this.textBoxIPv6.Size = new System.Drawing.Size(65, 24);
@@ -249,10 +249,10 @@
             this.textBoxIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxIP.Font = new System.Drawing.Font("Consolas", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxIP.ForeColor = System.Drawing.Color.White;
-            this.textBoxIP.Location = new System.Drawing.Point(150, 6);
+            this.textBoxIP.Location = new System.Drawing.Point(144, 6);
             this.textBoxIP.Name = "textBoxIP";
             this.textBoxIP.ReadOnly = true;
-            this.textBoxIP.Size = new System.Drawing.Size(636, 32);
+            this.textBoxIP.Size = new System.Drawing.Size(642, 32);
             this.textBoxIP.TabIndex = 0;
             this.textBoxIP.Text = "XXXX";
             // 
@@ -271,8 +271,6 @@
             // 
             this.buttonFlat1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonFlat1.FlatAppearance.BorderSize = 0;
-            this.buttonFlat1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonFlat1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonFlat1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFlat1.Location = new System.Drawing.Point(805, -17);
             this.buttonFlat1.Name = "buttonFlat1";
@@ -723,7 +721,7 @@
             this.textBoxIPv6next.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxIPv6next.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxIPv6next.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBoxIPv6next.Location = new System.Drawing.Point(79, 10);
+            this.textBoxIPv6next.Location = new System.Drawing.Point(73, 10);
             this.textBoxIPv6next.Name = "textBoxIPv6next";
             this.textBoxIPv6next.ReadOnly = true;
             this.textBoxIPv6next.Size = new System.Drawing.Size(65, 24);
@@ -751,10 +749,10 @@
             this.textBoxIPnext.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxIPnext.Font = new System.Drawing.Font("Consolas", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxIPnext.ForeColor = System.Drawing.Color.White;
-            this.textBoxIPnext.Location = new System.Drawing.Point(150, 6);
+            this.textBoxIPnext.Location = new System.Drawing.Point(144, 6);
             this.textBoxIPnext.Name = "textBoxIPnext";
             this.textBoxIPnext.ReadOnly = true;
-            this.textBoxIPnext.Size = new System.Drawing.Size(636, 32);
+            this.textBoxIPnext.Size = new System.Drawing.Size(642, 32);
             this.textBoxIPnext.TabIndex = 22;
             this.textBoxIPnext.Text = "XXXX";
             // 
@@ -837,8 +835,6 @@
             // 
             this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(805, -3);
             this.button2.Name = "button2";
@@ -1234,10 +1230,11 @@
             // 
             // WorldMap
             // 
+            this.WorldMap.BackColor = System.Drawing.Color.Maroon;
             this.WorldMap.Bearing = 0F;
             this.WorldMap.CanDragMap = true;
             this.WorldMap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WorldMap.EmptyTileColor = System.Drawing.Color.Navy;
+            this.WorldMap.EmptyTileColor = System.Drawing.Color.RoyalBlue;
             this.WorldMap.GrayScaleMode = false;
             this.WorldMap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.WorldMap.LevelsKeepInMemory = 5;
@@ -1291,20 +1288,12 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControlDetails;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox textBoxIP;
-        private System.Windows.Forms.PictureBox pictureBoxFlag;
-        private System.Windows.Forms.Button buttonFlat1;
         private System.Windows.Forms.TextBox textBoxIPv6;
         private System.Windows.Forms.TextBox textBoxIPv4;
-        private System.Windows.Forms.TextBox textBoxIso2;
-        private System.Windows.Forms.TextBox textBoxIso;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox textBoxCurrency2;
         private System.Windows.Forms.TextBox textBoxIsp2;
         private System.Windows.Forms.TextBox textBoxOrg2;
@@ -1325,7 +1314,6 @@
         private System.Windows.Forms.TextBox textBoxContinent;
         private System.Windows.Forms.TextBox textBoxCountry;
         private System.Windows.Forms.TextBox textBoxRegion;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox textBoxRates2;
         private System.Windows.Forms.TextBox textBoxPlural2;
         private System.Windows.Forms.TextBox textBoxDSToff2;
@@ -1346,15 +1334,8 @@
         private System.Windows.Forms.TextBox textBoxCountryCapital;
         private System.Windows.Forms.TextBox textBoxCountryPhone;
         private System.Windows.Forms.TextBox textBoxCountryNeighbours;
-        private System.Windows.Forms.TextBox textBoxContinentCode2;
         private System.Windows.Forms.Button buttonFlat2;
         private System.Windows.Forms.Button buttonFlat3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBoxSymbol2;
-        private System.Windows.Forms.Label labelSymbol;
-        private System.Windows.Forms.TextBox textBoxCurrencyCode2;
-        private System.Windows.Forms.Label labeCurrencyCode;
-        private System.Windows.Forms.Label labelContinentCode;
         private System.Windows.Forms.TextBox textBoxIPv6next;
         private System.Windows.Forms.TextBox textBoxIPv4next;
         private System.Windows.Forms.TextBox textBoxIPnext;
@@ -1364,5 +1345,21 @@
         private GMap.NET.WindowsForms.GMapControl WorldMap;
         private System.Windows.Forms.Button buttonZoomIn;
         private System.Windows.Forms.Button buttonZoomOut;
+        public System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        public System.Windows.Forms.Button buttonFlat1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.PictureBox pictureBoxFlag;
+        public System.Windows.Forms.TextBox textBoxIso2;
+        public System.Windows.Forms.TextBox textBoxIso;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        public System.Windows.Forms.TextBox textBoxContinentCode2;
+        public System.Windows.Forms.TextBox textBoxSymbol2;
+        public System.Windows.Forms.Label labelSymbol;
+        public System.Windows.Forms.TextBox textBoxCurrencyCode2;
+        public System.Windows.Forms.Label labeCurrencyCode;
+        public System.Windows.Forms.Label labelContinentCode;
+        public System.Windows.Forms.TabPage tabPage2;
+        public System.Windows.Forms.TabPage tabPage3;
     }
 }

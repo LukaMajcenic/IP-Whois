@@ -31,8 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            PresentationControls.CheckBoxProperties checkBoxProperties1 = new PresentationControls.CheckBoxProperties();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            PresentationControls.CheckBoxProperties checkBoxProperties1 = new PresentationControls.CheckBoxProperties();
             this.dataGridViewIP = new System.Windows.Forms.DataGridView();
             this.ColumnIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +42,9 @@
             this.buttonImport = new System.Windows.Forms.Button();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ThemeButton = new System.Windows.Forms.Button();
             this.checkBoxComboBoxCountries = new PresentationControls.CheckBoxComboBox();
+            this.buttonWriteToTxt = new System.Windows.Forms.Button();
             this.TextBoxSearch = new ChreneLib.Controls.TextBoxes.CTextBox();
             this.checkBoxIPv4 = new System.Windows.Forms.CheckBox();
             this.checkBoxIPv6 = new System.Windows.Forms.CheckBox();
@@ -53,7 +55,6 @@
             this.buttonFlat2 = new System.Windows.Forms.Button();
             this.radioButtonAscending = new System.Windows.Forms.RadioButton();
             this.radioButtonDescending = new System.Windows.Forms.RadioButton();
-            this.buttonWriteToTxt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIP)).BeginInit();
             this.tabControlMain.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -73,7 +74,7 @@
             this.dataGridViewIP.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewIP.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.dataGridViewIP.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridViewIP.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -196,6 +197,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.ThemeButton);
             this.tabPage2.Controls.Add(this.checkBoxComboBoxCountries);
             this.tabPage2.Controls.Add(this.buttonWriteToTxt);
             this.tabPage2.Controls.Add(this.TextBoxSearch);
@@ -209,6 +211,21 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Search";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // ThemeButton
+            // 
+            this.ThemeButton.BackColor = System.Drawing.Color.White;
+            this.ThemeButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.HotTrack;
+            this.ThemeButton.FlatAppearance.BorderSize = 2;
+            this.ThemeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ThemeButton.Image = ((System.Drawing.Image)(resources.GetObject("ThemeButton.Image")));
+            this.ThemeButton.Location = new System.Drawing.Point(64, 7);
+            this.ThemeButton.Name = "ThemeButton";
+            this.ThemeButton.Size = new System.Drawing.Size(96, 44);
+            this.ThemeButton.TabIndex = 10;
+            this.ThemeButton.Tag = "Privremeno";
+            this.ThemeButton.UseVisualStyleBackColor = false;
+            this.ThemeButton.Click += new System.EventHandler(this.ThemeButton_Click);
             // 
             // checkBoxComboBoxCountries
             // 
@@ -241,13 +258,28 @@
             this.checkBoxComboBoxCountries.TextChanged += new System.EventHandler(this.checkBoxComboBoxCountries_TextChanged);
             this.checkBoxComboBoxCountries.Click += new System.EventHandler(this.checkBoxComboBoxCountries_Click);
             // 
+            // buttonWriteToTxt
+            // 
+            this.buttonWriteToTxt.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonWriteToTxt.FlatAppearance.BorderSize = 0;
+            this.buttonWriteToTxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWriteToTxt.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonWriteToTxt.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonWriteToTxt.Image = global::MainForm.Properties.Resources.log2;
+            this.buttonWriteToTxt.Location = new System.Drawing.Point(6, 7);
+            this.buttonWriteToTxt.Name = "buttonWriteToTxt";
+            this.buttonWriteToTxt.Size = new System.Drawing.Size(52, 43);
+            this.buttonWriteToTxt.TabIndex = 7;
+            this.buttonWriteToTxt.UseVisualStyleBackColor = false;
+            this.buttonWriteToTxt.Click += new System.EventHandler(this.buttonWriteToTxt_Click);
+            // 
             // TextBoxSearch
             // 
             this.TextBoxSearch.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxSearch.Location = new System.Drawing.Point(67, 7);
+            this.TextBoxSearch.Location = new System.Drawing.Point(169, 7);
             this.TextBoxSearch.Margin = new System.Windows.Forms.Padding(6);
             this.TextBoxSearch.Name = "TextBoxSearch";
-            this.TextBoxSearch.Size = new System.Drawing.Size(683, 43);
+            this.TextBoxSearch.Size = new System.Drawing.Size(581, 43);
             this.TextBoxSearch.TabIndex = 6;
             this.TextBoxSearch.WaterMark = "Search based on attribute";
             this.TextBoxSearch.WaterMarkActiveForeColor = System.Drawing.Color.Silver;
@@ -406,21 +438,6 @@
             this.radioButtonDescending.UseVisualStyleBackColor = false;
             this.radioButtonDescending.CheckedChanged += new System.EventHandler(this.radioButtonDescending_CheckedChanged);
             // 
-            // buttonWriteToTxt
-            // 
-            this.buttonWriteToTxt.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonWriteToTxt.FlatAppearance.BorderSize = 0;
-            this.buttonWriteToTxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonWriteToTxt.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonWriteToTxt.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonWriteToTxt.Image = global::MainForm.Properties.Resources.log2;
-            this.buttonWriteToTxt.Location = new System.Drawing.Point(6, 7);
-            this.buttonWriteToTxt.Name = "buttonWriteToTxt";
-            this.buttonWriteToTxt.Size = new System.Drawing.Size(52, 43);
-            this.buttonWriteToTxt.TabIndex = 7;
-            this.buttonWriteToTxt.UseVisualStyleBackColor = false;
-            this.buttonWriteToTxt.Click += new System.EventHandler(this.buttonWriteToTxt_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -456,9 +473,6 @@
         #endregion
         private System.Windows.Forms.Button buttonImport;
         private System.Windows.Forms.TabControl tabControlMain;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private ChreneLib.Controls.TextBoxes.CTextBox textBoxImport;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIP;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCountry;
@@ -474,7 +488,11 @@
         public System.Windows.Forms.RadioButton radioButtonAscending;
         private System.Windows.Forms.Button buttonWriteToTxt;
         private System.Windows.Forms.Button buttonRandom;
-        private PresentationControls.CheckBoxComboBox checkBoxComboBoxCountries;
+        public System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.TabPage tabPage2;
+        public ChreneLib.Controls.TextBoxes.CTextBox textBoxImport;
+        public PresentationControls.CheckBoxComboBox checkBoxComboBoxCountries;
+        private System.Windows.Forms.Button ThemeButton;
     }
 }
 

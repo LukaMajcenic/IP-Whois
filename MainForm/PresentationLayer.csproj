@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorsClass.cs" />
     <Compile Include="DetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>

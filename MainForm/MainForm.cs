@@ -23,6 +23,8 @@ namespace MainForm
             InitializeComponent();
 
             _tableBindingSource.DataSource = _IP_Repostirory.GetIPMainForm();
+
+            ColorsClass.ColorComponents(this, Application.OpenForms);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -292,6 +294,18 @@ namespace MainForm
                     radioButtonDescending.Checked = false;
                 }
             }
+        }
+
+        private void ThemeButton_Click(object sender, EventArgs e)
+        {
+            ColorsClass.ChangeTheme();
+
+            if (ColorsClass.DarkTheme)
+                ThemeButton.Image = Image.FromFile("../../Resources/mode_d.png");
+            else
+                ThemeButton.Image = Image.FromFile("../../Resources/mode_w.png");
+
+            ColorsClass.ColorComponents(this, Application.OpenForms);
         }
     }
 }

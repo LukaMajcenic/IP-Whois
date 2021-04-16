@@ -29,6 +29,8 @@ namespace MainForm
             InitializeComponent();
             ipObject = i;
             mainformObject = mf;
+
+            ColorsClass.ColorComponents(mainformObject, Application.OpenForms, this);
         }
 
         private void DetailsForm_Load(object sender, EventArgs e)
@@ -262,7 +264,7 @@ namespace MainForm
                 Valid = true;
             }
 
-            if (Valid == true)
+            if (Valid)
             {
                 int Upper, Lower;
                 switch(LatOrLon)
