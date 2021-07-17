@@ -340,4 +340,4 @@ ASALocalRun/
 healthchecksdb
 
 #No need to push logs
-logs
+logs.txt
